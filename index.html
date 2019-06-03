@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<div style="background-image: url(west.jpg); height: 1000px; width: 100%; background-size: 100% 100% " class="bg">
+  
+		<h1 class="score ml-5" >0</h1>
+		<button type="button " class="btn btn-danger btn " style="display: none"><a href="strelok.html">RESTART</a></button>
+	<div  class="enemy">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 20%; margin-top: 19%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 60%; margin-top: 16%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 70%; margin-top: 20%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 10%; margin-top: 12%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 40%; margin-top: 13%; ">
+		<img class="enemy1" src="shooter.png" alt="" style="position: absolute; width: 6%; margin-left: 80%; margin-top: 8%; ">
+
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 10%; margin-top: 30%; ">
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 40%; margin-top: 30%; ">
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 60%; margin-top: 30%; ">
+		<img class="enemy2" src="cowboy.png" alt="" style="position: absolute; width: 5%; margin-left: 30%; margin-top: 24%; ">
+	
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 0%; margin-top: 20%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 25%; margin-top: 10%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 50%; margin-top: 24%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 70%; margin-top: 35%; ">
+		<img class="enemy3" src="cowboy2.png" alt="" style="position: absolute; width: 10%; margin-left: 90%; margin-top: 20%; ">
+
+	</div>
+
+	</div>
+
+
+	<script>
+		let en1 = document.querySelectorAll(".enemy1");
+		let en2 = document.querySelectorAll(".enemy2");
+		let en3 = document.querySelectorAll(".enemy3");
+		let score = document.querySelector(".score");
+		let scores = 0;
+		let enemy = document.querySelector(".enemy");
+		let bg = document.querySelector(".bg");
+		let btn = document.querySelector(".btn");
+
+
+		let func = function(arg) { //функция с аргументом
+			scores = scores + arg
+			document.querySelector(".score").innerHTML = scores
+		}
+
+		let timer = function() {
+			if (scores >= 100) {
+				alert("you win!");
+				enemy.style.opacity = "0";
+				enemy.style.transition = "1s";
+				bg.style.backgroundImage = "url(win.jpg)";
+				bg.style.backgroundSize = "100% 100%";
+				bg.style.transition = "1s";
+			}else{
+				alert("you loser!");
+				enemy.style.opacity = "0";
+				enemy.style.transition = "1s";
+				bg.style.backgroundImage = "url(lose.jpg)";
+				bg.style.backgroundSize = "100% 100%";
+				bg.style.transition = "1s";
+				btn.style.display = "block";
+			} 
+		}
+		setTimeout(timer,2000) ;
+
+		for(let index = 0; index<6; index = index + 1){//цикл
+			en1[index].onclick = function(){	
+			en1[index].style.display = "none";
+			func(10);
+			}
+		}
+		for(let index = 0; index<4; index = index + 1){//цикл
+			en2[index].onclick = function(){	
+			en2[index].style.display = "none";
+			func(20);
+			}
+		}
+		for(let index = 0; index<5; index = index + 1){//цикл
+			en3[index].onclick = function(){	
+			en3[index].style.display = "none";
+			func(30);
+			}
+		}
+
+
+	</script>
+</body>
+</html>
